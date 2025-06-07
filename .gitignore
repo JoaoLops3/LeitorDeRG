@@ -4,7 +4,6 @@ __pycache__/
 *$py.class
 *.so
 .Python
-env/
 build/
 develop-eggs/
 dist/
@@ -16,12 +15,14 @@ lib64/
 parts/
 sdist/
 var/
+wheels/
 *.egg-info/
 .installed.cfg
 *.egg
 
 # Virtual Environment
 venv/
+env/
 ENV/
 
 # IDE
@@ -29,6 +30,24 @@ ENV/
 .vscode/
 *.swp
 *.swo
+
+# Arquivos de imagem processados
+imagens/*.jpg
+imagens/*.png
+imagens/*.jpeg
+
+# Arquivos de log
+*.log
+
+# Arquivos de dados
+*.csv
+*.json
+
+# Arquivos de gráficos
+*.png
+*.jpg
+*.jpeg
+*.pdf
 
 # Sistema
 .DS_Store

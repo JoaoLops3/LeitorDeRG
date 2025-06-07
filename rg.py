@@ -6,6 +6,8 @@ from validate_docbr import CPF
 from datetime import datetime
 import re
 import os
+import time
+import argparse
 
 # Configuração do caminho do Tesseract para Windows
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
@@ -114,7 +116,7 @@ class RGValidator:
         
         self.result_queue.put(result)
 
-    def process_documents_parallel(self, image_paths):
+    def process_documents_parallel(self, image_paths, num_threads):
         """Processa múltiplos documentos em paralelo"""
         threads = []
         
@@ -136,6 +138,10 @@ class RGValidator:
         return results
 
 def main():
+    parser = argparse.ArgumentParser(description='Processa imagens de RG com um número específico de threads.')
+    parser.add_argument('--threads', type=int, default=1, help='Número de threads para processamento paralelo')
+    args = parser.parse_args()
+
     validator = RGValidator()
     
     base_dir = os.path.abspath(os.path.dirname(__file__))
@@ -145,7 +151,11 @@ def main():
         os.path.join(base_dir, 'documentos', 'Rg3.jpg'),
     ]
     
-    results = validator.process_documents_parallel(image_paths)
+    start_time = time.time()
+    results = validator.process_documents_parallel(image_paths, args.threads)
+    end_time = time.time()
+    
+    print(f"\nTempo de execução com {args.threads} threads: {end_time - start_time:.2f} segundos")
     
     for result in results:
         print("\nResultado para:", result['arquivo'])

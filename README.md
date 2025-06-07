@@ -1,56 +1,72 @@
-# Leitor de RG
+# Leitor de RG com OCR
 
-Este projeto realiza a leitura automática de imagens de RG (Registro Geral) utilizando OCR (Reconhecimento Óptico de Caracteres) e validação de dados extraídos, como número do RG e data de nascimento.
+Este projeto implementa um sistema de leitura de documentos de identidade (RG) utilizando OCR (Reconhecimento Óptico de Caracteres) e validação de dados. O sistema é capaz de processar imagens de RG e extrair informações como CPF e data de nascimento.
 
-## Como usar
+## Funcionalidades
 
-1. **Clone o repositório:**
+- Leitura de imagens de RG usando OCR
+- Extração de CPF e data de nascimento
+- Validação de dados extraídos
+- Processamento paralelo com múltiplas threads
+- Geração de gráficos de desempenho
 
-   ```bash
-   git clone https://github.com/JoaoLops3/LeitorDeRG.git
-   cd LeitorDeRG
-   ```
+## Requisitos
 
-2. **Instale as dependências:**
+- Python 3.8+
+- Bibliotecas Python (instaladas via pip):
+  - pytesseract
+  - opencv-python
+  - numpy
+  - matplotlib
+  - Pillow
 
-   ```bash
-   pip install -r requirements.txt
-   ```
+## Instalação
 
-3. **Instale o Tesseract OCR:**
+1. Clone o repositório:
 
-   - Baixe e instale o Tesseract para Windows: [Tesseract no Windows](https://github.com/UB-Mannheim/tesseract/wiki)
-   - O caminho padrão utilizado no código é `C:\Program Files\Tesseract-OCR`. Se instalar em outro local, ajuste o caminho no arquivo `rg.py`.
+```bash
+git clone [URL_DO_REPOSITÓRIO]
+```
 
-4. **Coloque as imagens dos RGs na pasta `documentos/`**
+2. Instale as dependências:
 
-   - Os arquivos devem ser imagens (JPG, PNG, etc.)
-   - Exemplo: `documentos/Rg1.jpg`, `documentos/Rg2.jpg`, ...
+```bash
+pip install -r requirements.txt
+```
 
-5. **Execute o projeto:**
-   ```bash
-   python rg.py
-   ```
+3. Instale o Tesseract OCR:
 
-## Saída esperada
+- Windows: Baixe e instale do [site oficial](https://github.com/UB-Mannheim/tesseract/wiki)
+- Linux: `sudo apt-get install tesseract-ocr`
+- macOS: `brew install tesseract`
 
-O programa irá exibir para cada imagem:
+## Uso
 
-- Nome do arquivo
-- RG extraído
-- Se o RG é válido
-- Data de nascimento
-- Idade
+1. Coloque as imagens dos RGs na pasta `imagens/`
 
-## Bibliotecas utilizadas
+2. Execute o script principal:
 
-- **pytesseract**: Interface Python para o Tesseract OCR
-- **Pillow**: Manipulação de imagens
-- **validate-docbr**: Validação de documentos brasileiros (usado para simular validação de RG)
-- **threading/queue**: Processamento paralelo das imagens
-- **re**: Expressões regulares para extração de dados
-- **datetime**: Cálculo de idade e validação de datas
+```bash
+python document_validator.py [número_de_threads]
+```
 
----
+3. Para gerar o gráfico de desempenho:
 
-Se tiver dúvidas ou sugestões, fique à vontade para abrir uma issue ou contribuir!
+```bash
+python plot_results.py
+```
+
+## Estrutura do Projeto
+
+- `document_validator.py`: Script principal para processamento dos RGs
+- `plot_results.py`: Script para geração de gráficos de desempenho
+- `imagens/`: Diretório para armazenar as imagens dos RGs
+- `requirements.txt`: Lista de dependências do projeto
+
+## Contribuição
+
+Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests.
+
+## Licença
+
+Este projeto está licenciado sob a licença MIT - veja o arquivo LICENSE para mais detalhes.

@@ -25,7 +25,7 @@ Este projeto implementa um sistema de leitura de documentos de identidade (RG) u
 1. Clone o repositório:
 
 ```bash
-git clone [URL_DO_REPOSITÓRIO]
+git clone https://github.com/JoaoLops3/LeitorDeRG.git
 ```
 
 2. Instale as dependências:

@@ -1,60 +1,56 @@
-# Validador de Documentos com OCR Paralelo
+# Leitor de RG
 
-Este sistema permite validar documentos (RG, CPF) usando OCR em processamento paralelo.
+Este projeto realiza a leitura automática de imagens de RG (Registro Geral) utilizando OCR (Reconhecimento Óptico de Caracteres) e validação de dados extraídos, como número do RG e data de nascimento.
 
-## Requisitos
+## Como usar
 
-- Python 3.7+
-- Tesseract OCR instalado no sistema
-- Bibliotecas Python listadas em `requirements.txt`
+1. **Clone o repositório:**
 
-## Instalação
+   ```bash
+   git clone https://github.com/JoaoLops3/LeitorDeRG.git
+   cd LeitorDeRG
+   ```
 
-1. Instale o Tesseract OCR:
+2. **Instale as dependências:**
 
-   - Windows: Baixe e instale de https://github.com/UB-Mannheim/tesseract/wiki
-   - Linux: `sudo apt-get install tesseract-ocr`
-   - Mac: `brew install tesseract`
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-2. Instale as dependências Python:
+3. **Instale o Tesseract OCR:**
 
-```bash
-pip install -r requirements.txt
-```
+   - Baixe e instale o Tesseract para Windows: [Tesseract no Windows](https://github.com/UB-Mannheim/tesseract/wiki)
+   - O caminho padrão utilizado no código é `C:\Program Files\Tesseract-OCR`. Se instalar em outro local, ajuste o caminho no arquivo `rg.py`.
 
-## Estrutura de Diretórios
+4. **Coloque as imagens dos RGs na pasta `documentos/`**
 
-```
-.
-├── document_validator.py
-├── requirements.txt
-└── documentos/
-    ├── rg1.jpg
-    ├── rg2.jpg
-    └── ...
-```
+   - Os arquivos devem ser imagens (JPG, PNG, etc.)
+   - Exemplo: `documentos/Rg1.jpg`, `documentos/Rg2.jpg`, ...
 
-## Como Usar
+5. **Execute o projeto:**
+   ```bash
+   python rg.py
+   ```
 
-1. Coloque as imagens dos documentos na pasta `documentos/`
-2. Modifique a lista `image_paths` no arquivo `document_validator.py` para incluir os caminhos das suas imagens
-3. Execute o script:
+## Saída esperada
 
-```bash
-python document_validator.py
-```
+O programa irá exibir para cada imagem:
 
-## Funcionalidades
+- Nome do arquivo
+- RG extraído
+- Se o RG é válido
+- Data de nascimento
+- Idade
 
-- Extração de texto usando OCR
-- Validação de RG
-- Validação de CPF
-- Extração e validação de data de nascimento
-- Processamento paralelo de múltiplos documentos
-- Suporte para imagens em formato JPG/PNG
+## Bibliotecas utilizadas
 
-## Observações
+- **pytesseract**: Interface Python para o Tesseract OCR
+- **Pillow**: Manipulação de imagens
+- **validate-docbr**: Validação de documentos brasileiros (usado para simular validação de RG)
+- **threading/queue**: Processamento paralelo das imagens
+- **re**: Expressões regulares para extração de dados
+- **datetime**: Cálculo de idade e validação de datas
 
-- O OCR funciona melhor com imagens claras e bem iluminadas
-- O sistema assume que os documentos estão em português
-- A validação de RG e CPF segue os padrões brasileiros
+---
+
+Se tiver dúvidas ou sugestões, fique à vontade para abrir uma issue ou contribuir!

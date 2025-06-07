@@ -8,7 +8,6 @@ Este projeto implementa um sistema de leitura de documentos de identidade (RG) u
 - Extração de CPF e data de nascimento
 - Validação de dados extraídos
 - Processamento paralelo com múltiplas threads
-- Geração de gráficos de desempenho
 
 ## Requisitos
 
@@ -59,7 +58,6 @@ python plot_results.py
 ## Estrutura do Projeto
 
 - `document_validator.py`: Script principal para processamento dos RGs
-- `plot_results.py`: Script para geração de gráficos de desempenho
 - `imagens/`: Diretório para armazenar as imagens dos RGs
 - `requirements.txt`: Lista de dependências do projeto
 
